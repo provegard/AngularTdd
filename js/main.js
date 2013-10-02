@@ -1,18 +1,3 @@
-(function(exports) {
-
-    function TodoList() {
-        this._items = [];
-    }
-
-    TodoList.prototype.isEmpty = function() { return this._items.length === 0; };
-
-    TodoList.prototype.add = function (item) { this._items.push(item); };
-
-    TodoList.prototype.items = function () { return this._items; };
-
-    exports.TodoList = TodoList;
-})(window.MyApp = (window.MyApp || {}));
-
 (function() {
 
     function mainControllerFunc($scope, $http) {
@@ -20,6 +5,10 @@
         $scope.addTodo = function () {
             $scope.todoItems.push($scope.todoItem);
             $scope.todoItem = "";
+        };
+
+        $scope.hasThingsToDo = function () {
+            return $scope.todoItems.length > 0;
         };
 
         function setQuoteInScope(response) {

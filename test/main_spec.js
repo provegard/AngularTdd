@@ -26,12 +26,25 @@ describe("The main controller", function () {
         expect(scope.todoItems).toEqual([]);
     });
 
+    it("should state that there is nothing to do when the TODO list is empty", function () {
+        createController();
+        expect(scope.hasThingsToDo()).toBe(false);
+    });
+
     it("should accept new items", function () {
         createController();
         scope.todoItem = "Code better TODO app...";
         scope.addTodo();
         scope.$digest();
         expect(scope.todoItems).toEqual(["Code better TODO app..."]);
+    });
+
+    it("should state that are things to do after adding an item", function () {
+        createController();
+        scope.todoItem = "Code better TODO app...";
+        scope.addTodo();
+        scope.$digest();
+        expect(scope.hasThingsToDo()).toBe(true);
     });
 
     it("should clear the TODO item after adding", function () {
