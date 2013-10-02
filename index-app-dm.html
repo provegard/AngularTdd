@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <title>AngularJS &amp;&amp; TDD @ Sthlm.js</title>
+</head>
+<body ng-controller="MainDm">
+
+<form ng-submit="todoList.add(todoItem)">
+    <label for="todoItem">Enter what to do:</label>
+    <input type="text" id="todoItem" ng-model="todoItem">
+    <button type="submit">Add</button>
+</form>
+<p>Quote:</p>
+<blockquote ng-bind-html-unsafe="quote"></blockquote>
+<p>To do:</p>
+<div ng-show="todoList.isEmpty()">There's nothing to do! Time for a nap!</div>
+<ul>
+    <li ng-repeat="item in todoList.items()">{{item}}</li>
+</ul>
+
+<script src="lib/jquery-1.10.2.js"></script>
+<script src="lib/angular-1.0.8.js"></script>
+<script src="js/main.js"></script>
+<script>
+    $("body").on("submit", function () {
+        $("#todoItem").focus();
+    });
+</script>
+</body>
+</html>
