@@ -1,5 +1,19 @@
 (function() {
 
+    function ngQuoteDirective() {
+        return {
+            restrict: "A",
+            link: function (scope, element, attr) {
+                scope.$watch(attr.ngQuote, function (quoteValue) {
+                    var value = quoteValue || "";
+                    element
+                        .html(value)
+                        .css("color", value.indexOf("Confucius") >= 0 ? "red" : "blue");
+                });
+            }
+        }
+    }
+
     function mainControllerFunc($scope, $http) {
         $scope.todoItems = [];
         $scope.addTodo = function () {
@@ -28,6 +42,7 @@
 
     angular
         .module("myApp", [])
-        .controller("Main", mainControllerFunc);
+        .controller("Main", mainControllerFunc)
+        .directive("ngQuote", ngQuoteDirective);
 
 })();
