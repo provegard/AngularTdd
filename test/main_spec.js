@@ -1,11 +1,15 @@
 describe("The main controller", function () {
-    var scope, controller, httpBackend;
+    var scope, controller;
+    var httpBackend;
 
     beforeEach(module("myApp"));
 
-    beforeEach(inject(function ($rootScope, $controller, $httpBackend) {
+    beforeEach(inject(function ($rootScope, $controller) {
         scope = $rootScope.$new();
         controller = $controller;
+    }));
+
+    beforeEach(inject(function ($httpBackend) {
         httpBackend = $httpBackend;
     }));
 
